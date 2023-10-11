@@ -19,7 +19,7 @@ ozone_without_missing <- na.omit(airquality)
 
 which_rows_mig1 <- migmorph$migration > 1
 migmorph[which_rows_mig1, ]
-
+migmorph[!which_rows_mig1, ]
 # Knockdown of which genes results in elongatedness < 1.5?
 
 which_rows_elongatedness1.5 <- migmorph$elongatedness < 1.5
@@ -46,9 +46,15 @@ migmorph[which_rows_mig1 | which_rows_elongatedness1.5, ]
 
 # Q1: Knockdown of which gene results in the highest migration?
 # # hint: this can be accomplished with the max() function
-
+highest_mig <- max(migmorph$migration)
+migmorph[migmorph$migration == highest_mig, "gene_symbol"]
+#alternatively
+migmorph[which.max(migmorph$migration), ]$gene_symbol
 # Q2: Make a new data.frame that has only rows with 0.9 > migration > 0.4 AND elongatedness > 1.4
 # Q2.1: What is the correlation between migration and elongatedness in this new dataset?
 # Q2.2: Draw an XY plot showing the relationship between these two variables in this new dataset
-
+migration_filter <- (migmorph$migration < 0.9) & (migmorph$migration > 0.4)
+morphology_filter <- migmorph$elongatedness > 1.4
+migmorph_filtered <- migmorph[(migration_filter & morphology_filter), ]
 # Q3: Write the data.frame from Q2 to a new file named filtered_data.csv
+write.csv(x = migmorph_filtered, file = "/Users/srao/Downloads/filtered_data.csv")

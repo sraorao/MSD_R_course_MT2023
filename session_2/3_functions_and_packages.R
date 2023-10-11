@@ -2,13 +2,15 @@
 ##Irina & Rao, 11/10/2023
 
 ####Functions are also assigned to variables####
-add <- function(x, y) return(x + y)
-add(10, 11)
-
+add <- function(first, second) return(first + second)
+add(10, 20)
+add(first = 10, second = 20)
 add <- function(x, y) {
+  x = x + 1
+  y = y + 1
   return(x + y)
 }
-
+add(10, 20)
 sum_of_squares <- function(x) {
   sum(x^2)
 }
@@ -27,4 +29,4 @@ fahrenheit_to_celsius(35)
 install.packages("weathermetrics")
 library("weathermetrics")
 
-fahrenheit.to.celsius(35)
+fahrenheit.to.celsius(35, round = 10)

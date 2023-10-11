@@ -25,7 +25,7 @@ migration_data <- migration_data[c(-1, -2), c(8, 10, 13)]
 colnames(migration_data) <- c("reagent_id", "gene_symbol", "migration")
 dim(migration_data)
 head(migration_data)
-
+tail(migration_data, 100)
 # Load morphology data
 # We are only interested in columns 8, 10, 19
 # We are also NOT interested in rows 1, 2
@@ -60,8 +60,8 @@ migmorph$reagent_id
 
 # Q: Subset migmorph for only the 2nd and 3rd rows
 # hint: fill in the blanks as needed: migmorph[ , ]
-migmorph[ , ]
-migmorph[ , ]
+migmorph[2:3, ]
+migmorph[c(2, 3), ]
 
 
 # Q: Examine the ToothGrowth dataset that is preloaded in your R session
